@@ -62,7 +62,24 @@ const queryChain = (done) => {
   done(null /*, data*/);
 };
 
+const personSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  age: {
+    type: Number,
+    required: false
+  },
+  favoriteFoods:{
+    type: [String],
+    required: false
+  }
+});
 
+Person = mongoose.model('Person', personSchema);
+
+module.exports = Person;
 
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
