@@ -50,10 +50,7 @@ const createManyPeople = (arrayOfPeople, done) => {
 }
 
 const findPeopleByName = (personName, done) => {
-  
-  Person.find({ name: personName }, (data) => {
-    done(null, data);
-  })
+  Person.find({ name: personName }, (err, data) => done(err,data));
 };
 
 const findOneByFood = (food, done) => {
