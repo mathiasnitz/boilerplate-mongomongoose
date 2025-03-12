@@ -31,8 +31,6 @@ const personSchema = new mongoose.Schema({
 
 Person = mongoose.model('Person', personSchema);
 
-module.exports = Person;
-
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
 };
