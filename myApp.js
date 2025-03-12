@@ -11,8 +11,27 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => console.log("✅ Erfolgreich mit MongoDB verbunden!"))
-.catch(err => console.error("❌ Fehler beim Verbinden mit MongoDB:", err));
+.then(() => console.log("Erfolgreich mit MongoDB verbunden!"))
+.catch(err => console.error("Fehler beim Verbinden mit MongoDB:", err));
+
+const personSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  age: {
+    type: Number,
+    required: false
+  },
+  favoriteFoods:{
+    type: [String],
+    required: false
+  }
+});
+
+Person = mongoose.model('Person', personSchema);
+
+module.exports = Person;
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
@@ -62,24 +81,7 @@ const queryChain = (done) => {
   done(null /*, data*/);
 };
 
-const personSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  age: {
-    type: Number,
-    required: false
-  },
-  favoriteFoods:{
-    type: [String],
-    required: false
-  }
-});
 
-Person = mongoose.model('Person', personSchema);
-
-module.exports = Person;
 
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
